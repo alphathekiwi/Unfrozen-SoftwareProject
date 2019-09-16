@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MobileApp.Handlers;
+using MobileApp.Models;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,11 +8,16 @@ namespace MobileApp
 {
     public partial class App : Application
     {
+        static Database DB;
+        public static Database Database { get { if (DB == null) DB = new Database(); return DB; } }
+
+        public static User CurrentUser { get; set; }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

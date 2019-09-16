@@ -58,6 +58,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.5.231</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.1" />
@@ -69,6 +72,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\SQLite_Android.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,13 +105,17 @@
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
-    <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileApp\MobileApp.csproj">
       <Project>{3FA04DDD-3363-4AC4-AB91-51C17E5437D0}</Project>
       <Name>MobileApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
