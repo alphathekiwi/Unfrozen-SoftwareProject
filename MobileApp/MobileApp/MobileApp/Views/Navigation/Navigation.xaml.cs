@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,6 +10,13 @@ namespace MobileApp.Views.Navigation
     {
         public Navigation()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
+            var settings = new ToolbarItem
+            {
+                IconImageSource = "profile.png",
+                Command = new Command(() => { Navigation.PushAsync(new Profile(App.CurrentUser)); }),
+            };
+            ToolbarItems.Add(settings);
             InitializeComponent();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
         }

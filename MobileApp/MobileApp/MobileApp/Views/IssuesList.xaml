@@ -5,11 +5,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="MobileApp.Views.IssuesList">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <StackLayout BackgroundColor="White" Margin="0,2">
+        <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="0,2">
+            <Button Text="New Post" Command="{Binding NewPost}" Margin="8,2" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" WidthRequest="180"/>
+            <Button Text="My Posts" Command="{Binding MyPosts}" Margin="8,2" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" WidthRequest="180"/>
         </StackLayout>
-    </ContentPage.Content>
+        <ListView x:Name="IssuesListView"
+            ItemsSource="{Binding Issues}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement" Margin="0,2,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="0,2">
+                            <Label Text="{Binding Title}" FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="8,0,0,0"/>
+                            <Label Text="{Binding Author, Converter={StaticResource ConvertUserId}}" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="0,0,8,0"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

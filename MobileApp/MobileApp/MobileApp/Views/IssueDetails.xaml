@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MobileApp.Views.IssueDetails">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="{Binding Issue.Author, Converter={StaticResource ConvertUserId}}" Command="{Binding ProfileCommand}"
+                       FontSize="Large" HorizontalOptions="StartAndExpand" FontAttributes="Bold" Margin="8,0" BackgroundColor="#00000000"/>
+                <Label Text="{Binding Issue.Posted}" FontSize="Medium" HorizontalOptions="End" FontAttributes="Italic" Margin="8,0" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <StackLayout BackgroundColor="DarkSlateGray" HeightRequest="6" Margin="10,0"/>
+            <Label Text="{Binding Issue.Content}" FontSize="Medium" HorizontalOptions="Start" Margin="20,0" />
+            <Button x:Name="LikeButton" Text="0 ❤️  Likes" Command="{Binding LikeCommand}" HorizontalOptions="CenterAndExpand" 
+                    MinimumWidthRequest="360" WidthRequest="360" CornerRadius="20" FontAttributes="Bold"/>
+            <StackLayout BackgroundColor="Gray" HeightRequest="6" Margin="10,0"/>            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

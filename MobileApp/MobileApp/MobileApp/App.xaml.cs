@@ -1,8 +1,7 @@
 ﻿using MobileApp.Handlers;
 using MobileApp.Models;
-using System;
+using MobileApp.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace MobileApp
 {

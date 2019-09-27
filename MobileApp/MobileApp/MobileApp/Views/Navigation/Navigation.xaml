@@ -13,7 +13,7 @@
   <MasterDetailPage.Detail>
     <NavigationPage>
       <x:Arguments>
-        <pages:IssuesList />
+        <pages:LoginPage />
       </x:Arguments>
     </NavigationPage>
   </MasterDetailPage.Detail>

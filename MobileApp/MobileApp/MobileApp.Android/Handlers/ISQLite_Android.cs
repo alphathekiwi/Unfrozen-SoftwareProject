@@ -1,27 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using MobileApp.Droid.Handlers;
 using MobileApp.Handlers;
-using MobileApp.Droid.Handlers;
 using SQLite;
+using System.IO;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(SQLite_Android))]
+[assembly: Dependency(typeof(ISQLite_Android))]
 
 namespace MobileApp.Droid.Handlers
 {
-    public class SQLite_Android : ISQLite
+    public class ISQLite_Android : ISQLite
     {
-        public SQLite_Android() { }
+        public ISQLite_Android() { }
         public SQLiteConnection GetConnection()
         {
             string fileName = "Main.db3";

@@ -13,8 +13,8 @@
               ItemsSource="{Binding MenuItems}">
       <d:ListView.ItemsSource>
           <x:Array Type="{x:Type x:String}">
-              <x:String>Page 1</x:String>
-              <x:String>Page 2</x:String>
+              <x:String>Issues</x:String>
+              <x:String></x:String>
               <x:String>Page 3</x:String>
               <x:String>Page 4</x:String>
               <x:String>Page 5</x:String>

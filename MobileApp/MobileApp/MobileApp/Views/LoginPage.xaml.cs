@@ -1,14 +1,8 @@
 ﻿using MobileApp.Models;
-using MobileApp.Views.Navigation;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace MobileApp
+namespace MobileApp.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
@@ -25,9 +19,10 @@ namespace MobileApp
         void Login_Button()
         {
             User user = App.Database.VerifyUser(EntryUsername.Text, EntryPassword.Text);
-            if (user != null) {
+            if (user != null)
+            {
                 App.CurrentUser = user;
-                App.Current.MainPage = new Navigation();
+                App.Current.MainPage = new NavigationPage(new IssuesList());
             }
             else
                 this.DisplayAlert("Error", "Incorrect User Name or Password", "Okay");

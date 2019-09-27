@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="MobileApp.LoginPage">
+             x:Class="MobileApp.Views.LoginPage">
 
     <StackLayout>
         <Image Source="logo.png" Margin="60,80,60,20" IsTabStop="False"/>

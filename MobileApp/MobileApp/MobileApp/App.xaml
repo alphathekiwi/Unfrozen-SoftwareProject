@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:hndlr="clr-namespace:MobileApp.Handlers"
              mc:Ignorable="d"
              x:Class="MobileApp.App">
     <Application.Resources>
-
+        <hndlr:ConvertUserId x:Key="ConvertUserId"/>
+        <hndlr:ConvertVisibility x:Key="ConvertVisibility"/>
+        <hndlr:InvertBool x:Key="InvertBool"/>
     </Application.Resources>
 </Application>
