@@ -8,7 +8,7 @@
     <StackLayout BackgroundColor="White" Margin="0,2">
         <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="0,2">
             <Button Text="New Post" Command="{Binding NewPost}" Margin="8,2" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" WidthRequest="180"/>
-            <Button Text="My Posts" Command="{Binding MyPosts}" Margin="8,2" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" WidthRequest="180"/>
+            <Button Text="My Posts" Command="{Binding MyPosts}" Margin="8,2" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" WidthRequest="180" x:Name="myPostsButton"/>
         </StackLayout>
         <ListView x:Name="IssuesListView"
             ItemsSource="{Binding Issues}"

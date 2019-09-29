@@ -13,4 +13,8 @@ namespace MobileApp.Handlers
     {
         Task<Stream> GetImageStreamAsync();
     }
+    public interface IEntryPopup
+    {
+        void ShowPopup(EntryPopup reference);
+    }
 }

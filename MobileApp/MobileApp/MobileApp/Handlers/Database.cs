@@ -13,33 +13,22 @@ namespace MobileApp.Handlers
         public Database()
         {
             database = DependencyService.Get<ISQLite>().GetConnection();
-            //database.DropTable<User>();
+            database.DropTable<User>();
             database.CreateTable<User>();
             if (database.Table<User>().Count() < 1)
             {
-                AddUser(new User("alpha", "test", "alphathekiwi@gmail.com", "+64 204 051 3343"));
-                AddUser(new User("yara", "test", "", ""));
-                AddUser(new User("admin", "test", "", ""));
+                SaveUser(new User("alpha", "test", "alphathekiwi@gmail.com", "+64 204 051 3343") { FirstName = "Aaron", LastName = "Saunders"});
+                SaveUser(new User("yara", "test", "test@email.com", "") { FirstName = "Yara", LastName = "Test" });
+                SaveUser(new User("admin", "test", "", ""));
             }
+            //database.DropTable<Issue>();
             database.CreateTable<Issue>();
             if (database.Table<Issue>().Count() < 1)
-                AddIssue(new Issue(1, "Love Testing", "Something to test that all my code is working correctly"));
-        }
+                SaveIssue(new Issue(1, "Love Testing", "Something to test that all my code is working correctly"));
+            database.CreateTable<Comment>();
 
-        public bool AddUser(User User)
-        {
-            lock (locker)
-            {
-                return database.Insert(User) > 0;
-            };
         }
-        public bool AddIssue(Issue Issue)
-        {
-            lock (locker)
-            {
-                return database.Insert(Issue) > 0;
-            };
-        }
+        #region User methods
         public bool SaveUser(User User)
         {
             lock (locker)
@@ -49,21 +38,6 @@ namespace MobileApp.Handlers
                 if (u != null && (User.Password == null || User.Password == ""))
                     User.Password = u.Password;
                 return database.InsertOrReplace(User) > 0;
-            };
-        }
-        public bool SaveIssue(Issue Issue)
-        {
-            lock (locker)
-            {
-                return Issue.Id == 0 ? database.Insert(Issue) > 0 : database.InsertOrReplace(Issue) > 0;
-            };
-        }
-        public List<Issue> GetIssues(int id)
-        {
-            lock (locker)
-            {
-                if (id == 0) return database.Table<Issue>().ToList();
-                return database.Query<Issue>($"SELECT * FROM Issue WHERE Author='{id}'");
             };
         }
         public User GetUser(string userName)
@@ -105,5 +79,42 @@ namespace MobileApp.Handlers
                 else return null;
             }
         }
+        #endregion
+        #region Issue methods
+        public bool SaveIssue(Issue Issue)
+        {
+            lock (locker)
+            {
+                return Issue.Id == 0 ? database.Insert(Issue) > 0 : database.InsertOrReplace(Issue) > 0;
+            };
+        }
+        public List<Issue> GetIssues(int id)
+        {
+            lock (locker)
+            {
+                if (id == 0) return database.Table<Issue>().ToList();
+                return database.Query<Issue>($"SELECT * FROM Issue WHERE Author='{id}'");
+            };
+        }
+        #endregion
+        #region Comment methods
+        public bool SaveComment(Comment Comment)
+        {
+            lock (locker)
+            {
+                return Comment.Id == 0 ? database.Insert(Comment) > 0 : database.InsertOrReplace(Comment) > 0;
+            };
+        }
+        public List<Comment> GetComments(int issue, int author = 0)
+        {
+            lock (locker)
+            {
+                if (issue == 0) return database.Table<Comment>().ToList();
+                else if(author > 0)
+                    return database.Query<Comment>($"SELECT * FROM Comment WHERE IssueId='{issue}'&&Author=='{author}'");
+                return database.Query<Comment>($"SELECT * FROM Comment WHERE IssueId='{issue}'");
+            };
+        }
+        #endregion
     }
 }

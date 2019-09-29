@@ -24,8 +24,10 @@ namespace MobileApp.Views
             Title = "Products list view";
             BindingContext = this;
             NewPost = new Command(() => { Navigation.PushAsync(new IssueForm(new Issue())); });
-            MyPosts = new Command(() => { Navigation.PushAsync(new IssuesList(App.CurrentUser.Id)); });
+            MyPosts = new Command(() => { if (Id > 0) Navigation.PopAsync();
+                else Navigation.PushAsync(new IssuesList(App.CurrentUser.Id)); });
             InitializeComponent();
+            if (Id > 0) myPostsButton.Text = "All posts";
         }
 
         protected override void OnAppearing()

@@ -6,17 +6,43 @@
              mc:Ignorable="d"
              x:Class="MobileApp.Views.IssueDetails">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button Text="{Binding Issue.Author, Converter={StaticResource ConvertUserId}}" Command="{Binding ProfileCommand}"
-                       FontSize="Large" HorizontalOptions="StartAndExpand" FontAttributes="Bold" Margin="8,0" BackgroundColor="#00000000"/>
-                <Label Text="{Binding Issue.Posted}" FontSize="Medium" HorizontalOptions="End" FontAttributes="Italic" Margin="8,0" VerticalOptions="CenterAndExpand"/>
+                       FontSize="Medium" HorizontalOptions="StartAndExpand" FontAttributes="Bold" Margin="0" BackgroundColor="#00000000"/>
+                <Label Text="{Binding Issue.Posted}" FontSize="Small" HorizontalOptions="End" FontAttributes="Italic" Margin="8,0" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
             <StackLayout BackgroundColor="DarkSlateGray" HeightRequest="6" Margin="10,0"/>
             <Label Text="{Binding Issue.Content}" FontSize="Medium" HorizontalOptions="Start" Margin="20,0" />
-            <Button x:Name="LikeButton" Text="0 ❤️  Likes" Command="{Binding LikeCommand}" HorizontalOptions="CenterAndExpand" 
-                    MinimumWidthRequest="360" WidthRequest="360" CornerRadius="20" FontAttributes="Bold"/>
-            <StackLayout BackgroundColor="Gray" HeightRequest="6" Margin="10,0"/>            
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="LikeButton" Text="0 ❤️  Likes" Command="{Binding LikeCommand}" HorizontalOptions="CenterAndExpand" 
+                    MinimumWidthRequest="360" WidthRequest="180" CornerRadius="20" FontAttributes="Bold"/>
+                <Button x:Name="CommentButton" Text="Comment" Command="{Binding CommentCommand}" HorizontalOptions="CenterAndExpand" 
+                    MinimumWidthRequest="360" WidthRequest="180" CornerRadius="20" FontAttributes="Bold"/>
+            </StackLayout>
+            <StackLayout BackgroundColor="Gray" HeightRequest="6" Margin="10,0"/>
+            <ListView x:Name="IssuesListView" HasUnevenRows="True" RowHeight="-1"
+            ItemsSource="{Binding Comments}" ItemTapped="CommentTapped"
+            CachingStrategy="RecycleElement" Margin="20,2,20,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="0,2">
+                                    <Label Text="{Binding Author, Converter={StaticResource ConvertUserId}}" FontAttributes="Bold" 
+                                           HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="0,0,8,0"/>
+                                    <Label Text="{Binding Posted}" FontSize="Small" 
+                                           HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="8,0,0,0"/>
+                                </StackLayout>
+                                <Label Text="{Binding Content}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
