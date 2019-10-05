@@ -1,0 +1,37 @@
+{
+    "level": "tea for 2",
+    "scenes": [
+        {
+            "name": "Hey",
+            "dialog": [
+                0,
+                1,
+                2
+            ]
+        }
+    ],
+    "dialogs": [
+        {
+            "line": "How you doing gurl *wave*",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "You know we should hang out",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        }
+    ],
+    "responses": []
+}

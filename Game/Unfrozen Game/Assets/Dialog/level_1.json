@@ -1,0 +1,38 @@
+{
+    "level": "Chance meeting with charming",
+    "scenes": [
+        {
+            "name": "intro",
+            "dialog": [
+                0,
+                1
+            ]
+        },
+        {
+            "name": "compliment",
+            "dialog": []
+        }
+    ],
+    "dialogs": [
+        {
+            "line": "Hi your cute looking",
+            "attarction": 1,
+            "uniqueness": -2,
+            "scene": 1,
+            "response": 1
+        },
+        {
+            "line": "Hey Whats a guy like me have to do to get you number",
+            "attarction": 1,
+            "uniqueness": 2,
+            "scene": 1,
+            "response": 2
+        }
+    ],
+    "responses": [
+        "Your so sweet thanks :)",
+        "Aww you flatter me",
+        "Sorry im not interested",
+        "Go away please"
+    ]
+}
