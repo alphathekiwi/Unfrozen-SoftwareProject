@@ -1,0 +1,54 @@
+{
+    "level": "Chance meeting with charming",
+    "scenes": [
+        {
+            "name": "intro",
+            "dialog": [
+                0,
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "name": "compliment",
+            "dialog": []
+        }
+    ],
+    "dialogs": [
+        {
+            "line": "Good morning! Wow! You are so beautiful! May I get coffee for you?",
+            "attarction": 1,
+            "uniqueness": -2,
+            "scene": 1,
+            "response": 2
+        },
+        {
+            "line": "Hey Whats a guy like me have to do to get you number",
+            "attarction": 1,
+            "uniqueness": 2,
+            "scene": 1,
+            "response": 2
+        },
+        {
+            "line": "Hello, beautiful! You look a little bit tired. Do you need a free massage?",
+            "attarction": -10,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Hey! May I ask you a little question? Do you know how many people live in Auckland?",
+            "attarction": 0,
+            "uniqueness": 1,
+            "scene": 1,
+            "response": 1
+        }
+    ],
+    "responses": [
+        "Your so sweet thanks :)",
+        "Aww you flatter me",
+        "Sorry im not interested",
+        "Go away please"
+    ]
+}

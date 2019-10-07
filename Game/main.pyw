@@ -50,7 +50,7 @@ class DialogCreator(Frame):
                     NewDialog.grid(row=(len(jsonL['scenes'][self.active_scene]['dialog'])), column=3, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 0))
 
                 for idxR, jsonR in enumerate(jsonL['responses']):
-                    if self.active_dialog == idxR:
+                    if self.active_dialog >= 0 and idxR == jsonL['dialogs'][self.active_dialog]['response']:
                         Response = Text(self.Entries, height=2, width=2, bg="#d4ffdf", wrap=WORD)
                     else:
                         Response = Text(self.Entries, height=2, width=2, wrap=WORD)
@@ -194,13 +194,16 @@ class DialogCreator(Frame):
     def load_levels(self):
         os.chdir('..')
         print(os.getcwd())
-        for r, d, f in os.walk(os.getcwd() + '\\Game\\Unfrozen Game\\Assets\\Dialog'):
+        for r, d, f in os.walk(os.getcwd()):
             for file in f:
-                if '.json' in file and '.meta' not in file:
+                if 'level' in file and '.json' in file and '.meta' not in file:
                     self.levels.append(json.load(open(os.path.join(r, file))))
 
     def save_level(self):
-        loc = os.getcwd() + '\\Game\\Unfrozen Game\\Assets\\Dialog\\'
+        loc = os.getcwd()
+        for name in ['Game','Unfrozen Game','Assets','Dialog']:
+            if name not in loc:
+                loc += '\\' + name
         if not os.path.exists(loc):
             os.makedirs(loc)
         outfile = open(loc + f'level_{(self.active_level + 1)}.json', 'w')
