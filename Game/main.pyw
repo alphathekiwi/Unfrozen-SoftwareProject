@@ -34,30 +34,42 @@ class DialogCreator(Frame):
             Grid.columnconfigure(self.Entries, x, weight=1, uniform='a')
 
         for idxL, jsonL in enumerate(self.levels):
-            self.ButtonEntry(self.Entries, jsonL['level'], idxL, 1, self.set_level, self.active_level)
+            self.ButtonEntry(
+                self.Entries, jsonL['level'], idxL, 1, self.set_level, self.active_level)
 
             if idxL == self.active_level:
                 for idxS, jsonS in enumerate(jsonL['scenes']):
-                    self.ButtonEntry(self.Entries, jsonS['name'], idxS, 2, self.set_scene, self.active_scene)
+                    self.ButtonEntry(
+                        self.Entries, jsonS['name'], idxS, 2, self.set_scene, self.active_scene)
                 NewScene = Text(self.Entries, height=2, width=2, bg='#d4fcff')
-                NewScene.grid(row=len(jsonL['scenes']), column=2, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 0))
+                NewScene.grid(row=len(jsonL['scenes']), column=2, sticky=(
+                    N, S, E, W), padx=(8, 0), pady=(8, 0))
                 if self.active_scene >= 0:
                     for DI, DV in enumerate(jsonL['scenes'][self.active_scene]['dialog']):
                         if DV < len(jsonL['dialogs']):
-                            active = jsonL['scenes'][self.active_scene]['dialog'].index(self.active_dialog) if self.active_dialog >= 0 else -1
-                            self.ButtonEntry(self.Entries, jsonL['dialogs'][DV]['line'], DI, 3, self.set_dialog, active)
-                    NewDialog = Button(self.Entries, height=2, width=2, text="Add Dialog", bg='#d4fcff', command=self.add_dialog)
-                    NewDialog.grid(row=(len(jsonL['scenes'][self.active_scene]['dialog'])), column=3, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 0))
+                            active = jsonL['scenes'][self.active_scene]['dialog'].index(
+                                self.active_dialog) if self.active_dialog >= 0 else -1
+                            self.ButtonEntry(
+                                self.Entries, jsonL['dialogs'][DV]['line'], DI, 3, self.set_dialog, active)
+                    NewDialog = Button(self.Entries, height=2, width=2,
+                                       text="Add Dialog", bg='#d4fcff', command=self.add_dialog)
+                    NewDialog.grid(row=(len(jsonL['scenes'][self.active_scene]['dialog'])), column=3, sticky=(
+                        N, S, E, W), padx=(8, 0), pady=(8, 0))
 
                 for idxR, jsonR in enumerate(jsonL['responses']):
                     if self.active_dialog >= 0 and idxR == jsonL['dialogs'][self.active_dialog]['response']:
-                        Response = Text(self.Entries, height=2, width=2, bg="#d4ffdf", wrap=WORD)
+                        Response = Text(self.Entries, height=2,
+                                        width=2, bg="#d4ffdf", wrap=WORD)
                     else:
-                        Response = Text(self.Entries, height=2, width=2, wrap=WORD)
+                        Response = Text(self.Entries, height=2,
+                                        width=2, wrap=WORD)
                     Response.insert("1.0", jsonR)
-                    Response.grid(row=idxR, column=4, sticky=(N, S, E, W), padx=(8, 8), pady=(8, 0))
-                NewResponse = Text(self.Entries, height=2, width=2, bg='#d4fcff')
-                NewResponse.grid(row=len(jsonL['responses']), column=4, sticky=(N, S, E, W), padx=(8, 8), pady=(8, 0))
+                    Response.grid(row=idxR, column=4, sticky=(
+                        N, S, E, W), padx=(8, 8), pady=(8, 0))
+                NewResponse = Text(self.Entries, height=2,
+                                   width=2, bg='#d4fcff')
+                NewResponse.grid(row=len(jsonL['responses']), column=4, sticky=(
+                    N, S, E, W), padx=(8, 8), pady=(8, 0))
 
         # Create the Box for editing dialog pramaters
         self.DialogPrams = Frame(parent, name="dialog_prams", bg="#5e5e5d")
@@ -65,28 +77,43 @@ class DialogCreator(Frame):
         for x in range(2, 6):
             Grid.columnconfigure(self.DialogPrams, x, weight=1, uniform='a')
         Grid.columnconfigure(self.DialogPrams, 1, weight=6)
-        Label(self.DialogPrams, text="Line", bg="#8f8f8d").grid(row=0, column=1, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 8))
-        Label(self.DialogPrams, text="Attraction", bg="#8f8f8d").grid(row=0, column=2, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 8))
-        Label(self.DialogPrams, text="Uniqueness", bg="#8f8f8d").grid(row=0, column=3, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 8))
-        Label(self.DialogPrams, text="GoTo Scene", bg="#8f8f8d").grid(row=0, column=4, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 8))
-        Label(self.DialogPrams, text="Response", bg="#8f8f8d").grid(row=0, column=5, sticky=(N, S, E, W), padx=(8, 8), pady=(8, 8))
+        Label(self.DialogPrams, text="Line", bg="#8f8f8d").grid(
+            row=0, column=1, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 8))
+        Label(self.DialogPrams, text="Attraction", bg="#8f8f8d").grid(
+            row=0, column=2, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 8))
+        Label(self.DialogPrams, text="Uniqueness", bg="#8f8f8d").grid(
+            row=0, column=3, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 8))
+        Label(self.DialogPrams, text="GoTo Scene", bg="#8f8f8d").grid(
+            row=0, column=4, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 8))
+        Label(self.DialogPrams, text="Response", bg="#8f8f8d").grid(
+            row=0, column=5, sticky=(N, S, E, W), padx=(8, 8), pady=(8, 8))
         if self.active_dialog >= 0 and self.active_dialog < len(self.levels[self.active_level]['dialogs']):
             dialog = self.levels[self.active_level]['dialogs'][self.active_dialog]
-            DPLine = Text(self.DialogPrams, name="dialog_line", height=2, width=2, bg="#d4ffdf")
+            DPLine = Text(self.DialogPrams, name="dialog_line",
+                          height=2, width=2, bg="#d4ffdf")
             DPLine.insert("1.0", dialog['line'])
-            DPLine.grid(row=2, column=1, sticky=(N, S, E, W), padx=(8, 0), pady=(0, 8))
-            DPAttract = Text(self.DialogPrams, name="dialog_attraction", height=2, width=2, bg="#d4ffdf")
+            DPLine.grid(row=2, column=1, sticky=(
+                N, S, E, W), padx=(8, 0), pady=(0, 8))
+            DPAttract = Text(
+                self.DialogPrams, name="dialog_attraction", height=2, width=2, bg="#d4ffdf")
             DPAttract.insert("1.0", dialog['attarction'])
-            DPAttract.grid(row=2, column=2, sticky=(N, S, E, W), padx=(8, 0), pady=(0, 8))
-            DPUnique = Text(self.DialogPrams, name="dialog_uniqueness", height=2, width=2, bg="#d4ffdf")
+            DPAttract.grid(row=2, column=2, sticky=(
+                N, S, E, W), padx=(8, 0), pady=(0, 8))
+            DPUnique = Text(self.DialogPrams, name="dialog_uniqueness",
+                            height=2, width=2, bg="#d4ffdf")
             DPUnique.insert("1.0", dialog['uniqueness'])
-            DPUnique.grid(row=2, column=3, sticky=(N, S, E, W), padx=(8, 0), pady=(0, 8))
-            DPResponse = Text(self.DialogPrams, name="dialog_scene", height=2, width=2, bg="#d4ffdf")
+            DPUnique.grid(row=2, column=3, sticky=(
+                N, S, E, W), padx=(8, 0), pady=(0, 8))
+            DPResponse = Text(self.DialogPrams, name="dialog_scene",
+                              height=2, width=2, bg="#d4ffdf")
             DPResponse.insert("1.0", dialog['scene'])
-            DPResponse.grid(row=2, column=4, sticky=(N, S, E, W), padx=(8, 0), pady=(0, 8))
-            DPResponse = Text(self.DialogPrams, name="dialog_response", height=2, width=2, bg="#d4ffdf")
+            DPResponse.grid(row=2, column=4, sticky=(
+                N, S, E, W), padx=(8, 0), pady=(0, 8))
+            DPResponse = Text(
+                self.DialogPrams, name="dialog_response", height=2, width=2, bg="#d4ffdf")
             DPResponse.insert("1.0", dialog['response'])
-            DPResponse.grid(row=2, column=5, sticky=(N, S, E, W), padx=(8, 8), pady=(0, 8))
+            DPResponse.grid(row=2, column=5, sticky=(
+                N, S, E, W), padx=(8, 8), pady=(0, 8))
 
     def SavetoJson(self):
         # IF USER ENTERED IN TOP FIELD
@@ -102,27 +129,33 @@ class DialogCreator(Frame):
                 pass
         # LEVEL SAVE
         if self.ExtractJson(self.Entries, self.active_level, 1) is not None:
-            self.levels[self.active_level]['level'] = self.ExtractJson(self.Entries, self.active_level, 1)
+            self.levels[self.active_level]['level'] = self.ExtractJson(
+                self.Entries, self.active_level, 1)
         # SCENES SAVE
         lenS = len(self.levels[self.active_level]['scenes'])
         for idxS in range(lenS):
             if self.ExtractJson(self.Entries, idxS, 2) is not None:
-                self.levels[self.active_level]['scenes'][idxS]['name'] = self.ExtractJson(self.Entries, idxS, 2)
+                self.levels[self.active_level]['scenes'][idxS]['name'] = self.ExtractJson(
+                    self.Entries, idxS, 2)
         if self.ExtractJson(self.Entries, lenS, 2) is not None:
-            self.levels[self.active_level]['scenes'].append({"name": self.ExtractJson(self.Entries, lenS, 2), "dialog": []})
+            self.levels[self.active_level]['scenes'].append(
+                {"name": self.ExtractJson(self.Entries, lenS, 2), "dialog": []})
         # DIALOGS SAVE
         if (self.DialogPrams is not None and self.active_dialog >= 0 and
                 self.active_dialog in self.levels[self.active_level]['scenes'][self.active_scene]['dialog']):
             for idxKD, jsonKD in enumerate(["line", "attarction", "uniqueness", "scene", "response"]):
                 if self.ExtractJson(self.DialogPrams, 2, idxKD + 1) is not None:
-                    self.levels[self.active_level]['dialogs'][self.active_dialog][jsonKD] = self.ExtractJson(self.DialogPrams, 2, idxKD + 1)
+                    self.levels[self.active_level]['dialogs'][self.active_dialog][jsonKD] = self.ExtractJson(
+                        self.DialogPrams, 2, idxKD + 1)
         # RESPONSES SAVE
         lenR = len(self.levels[self.active_level]['responses'])
         for idxR in range(lenR):
             if self.ExtractJson(self.Entries, idxR, 4) is not None:
-                self.levels[self.active_level]['responses'][idxR] = self.ExtractJson(self.Entries, idxR, 4)
+                self.levels[self.active_level]['responses'][idxR] = self.ExtractJson(
+                    self.Entries, idxR, 4)
         if self.ExtractJson(self.Entries, lenR, 4) is not None:
-            self.levels[self.active_level]['responses'].append(self.ExtractJson(self.Entries, lenR, 4))
+            self.levels[self.active_level]['responses'].append(
+                self.ExtractJson(self.Entries, lenR, 4))
 
     def ExtractJson(self, parent, row, col):
         try:
@@ -139,12 +172,16 @@ class DialogCreator(Frame):
 
     def ButtonEntry(self, parent, text, row, col, command, active=-1):
         if row == active:
-            BE = Text(parent, name=f"entry[{col},{row}]", height=2, width=2, bg="#d4ffdf", wrap=WORD)  # , fg="white", bg="#484949"
+            # , fg="white", bg="#484949"
+            BE = Text(parent, name=f"entry[{col},{row}]",
+                      height=2, width=2, bg="#d4ffdf", wrap=WORD)
             #BE.insert("1.0", text)
             BE.insert("1.0", text)
         else:
-            BE = Button(parent, height=2, text=text, command=lambda rw=row: command(rw))
-        BE.grid(row=row, column=col, sticky=(N, S, E, W), padx=(8, 0), pady=(8, 0))
+            BE = Button(parent, height=2, text=text,
+                        command=lambda rw=row: command(rw))
+        BE.grid(row=row, column=col, sticky=(
+            N, S, E, W), padx=(8, 0), pady=(8, 0))
         return BE
 
     def none(self, pram):
@@ -187,9 +224,11 @@ class DialogCreator(Frame):
 
     def add_dialog(self):
         self.SavetoJson()
-        self.levels[self.active_level]['dialogs'].append({"line": " ",  "attarction": 0, "uniqueness": 0, "scene": int(self.active_scene), "response": 0})
+        self.levels[self.active_level]['dialogs'].append(
+            {"line": " ",  "attarction": 0, "uniqueness": 0, "scene": int(self.active_scene), "response": 0})
         self.active_dialog = len(self.levels[self.active_level]['dialogs']) - 1
-        self.levels[self.active_level]['scenes'][self.active_scene]['dialog'].append(self.active_dialog)
+        self.levels[self.active_level]['scenes'][self.active_scene]['dialog'].append(
+            self.active_dialog)
         self.save_level()
         self.refresh_UI()
 
@@ -203,7 +242,7 @@ class DialogCreator(Frame):
 
     def save_level(self):
         loc = os.getcwd()
-        for name in ['Game', 'Unfrozen Game', 'Assets', 'Dialog']:
+        for name in ['Game', 'Unfrozen Game', 'Assets', 'StreamingAssets']:
             if name not in loc:
                 loc += '\\' + name
         if not os.path.exists(loc):
