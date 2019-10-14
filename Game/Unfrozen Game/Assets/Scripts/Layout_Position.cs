@@ -16,7 +16,8 @@ public class Layout_Position : MonoBehaviour
     public Horizontal horizontal;
     public Vertical vertical;
     public int padding;
-    void Update()
+
+    void Start()
     {
         RectTransform rt = GetComponent<RectTransform>();
         RectTransform pt = transform.parent.GetComponent<RectTransform>();
