@@ -1,5 +1,6 @@
 import json
 import os
+from re import *
 from tkinter import messagebox
 
 try:
@@ -137,9 +138,12 @@ class DialogCreator(Frame):
             if self.ExtractJson(self.Entries, idxS, 2) is not None:
                 self.levels[self.active_level]['scenes'][idxS]['name'] = self.ExtractJson(
                     self.Entries, idxS, 2)
-        if self.ExtractJson(self.Entries, lenS, 2) is not None:
-            self.levels[self.active_level]['scenes'].append(
-                {"name": self.ExtractJson(self.Entries, lenS, 2), "dialog": []})
+        try:
+            Widget = self.Entries.grid_slaves(lenS, 2)
+            if isinstance(Widget[0], Text) and Widget[0].get("1.0", 'end-1c'):
+                self.parse_import(Widget[0].get("1.0", 'end-1c'))
+        except IndexError:
+            pass
         # DIALOGS SAVE
         if (self.DialogPrams is not None and self.active_dialog >= 0 and
                 self.active_dialog in self.levels[self.active_level]['scenes'][self.active_scene]['dialog']):
@@ -251,6 +255,40 @@ class DialogCreator(Frame):
         outfile.seek(0)
         outfile.write(json.dumps(self.levels[self.active_level], indent=4))
         outfile.truncate()
+
+    def parse_import(self, s):
+        nl = s.count('\n')
+        if(nl <= 1):
+            print(f"Not enough newlines, just using basic append {nl}")
+            self.levels[self.active_level]['scenes'].append({"name": s, "dialog": []})
+        else:
+            patterns = [r"([A-Z][\w\s,!.:“”’\-\?]+)(?:\(([-+=])charm,? ([-+=])unique[\),])[a-zA-Z\s,!.…\?\)\(]*(\d)?\)",
+                        r"([A-Z][\w\s,!.:“”’\-\?]+)(?:\(([-+=]) ?([-+=])[\),])?[a-zA-Z\s,!.…\?\)\(]*(\d)?\)"]
+            parts = s.split('\n')
+            parts = list(filter(None, parts))
+            print(parts)
+            start = len(self.levels[self.active_level]['dialogs'])
+            self.levels[self.active_level]['scenes'].append({"name": parts[0], "dialog": list(range(start, start + len(parts) - 1))})
+            for idx, part in enumerate(parts):
+                for p in patterns:
+                    match = search(p, part)
+                    if (match):
+                        self.levels[self.active_level]['dialogs'].append({
+                            "line": match.group(1),
+                            "attarction": self.parse_symbol(match.group(2)) or 0,
+                            "uniqueness": self.parse_symbol(match.group(3)) or 0,
+                            "scene": match.group(4) - 1 if match.group(4) else 0,
+                            "response": 0
+                        })
+                        break
+
+    def parse_symbol(self, symbol):
+        if(symbol == "+"):
+            return 1
+        if(symbol == "="):
+            return 0
+        if(symbol == "-"):
+            return -1
 
     def handleReturn(self, event):
         self.SavetoJson()

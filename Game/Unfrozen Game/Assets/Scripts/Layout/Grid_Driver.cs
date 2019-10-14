@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Layout_Grid_Driver : MonoBehaviour
+public class Grid_Driver : MonoBehaviour
 {
     public int cols = 1;
     public int rows = 1;

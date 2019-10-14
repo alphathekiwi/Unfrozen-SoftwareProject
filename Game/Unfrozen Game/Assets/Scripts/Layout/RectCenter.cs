@@ -11,7 +11,7 @@ public enum Vertical
     None, Top, Bottom
 }
 [RequireComponent(typeof(RectTransform))]
-public class Layout_Position : MonoBehaviour
+public class RectCenter : MonoBehaviour
 {
     public Horizontal horizontal;
     public Vertical vertical;
