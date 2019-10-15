@@ -273,14 +273,26 @@ class DialogCreator(Frame):
                 for p in patterns:
                     match = search(p, part)
                     if (match):
+                        try:
+                            sce = match.group(4) - 1 if match.group(4) else 0
+                        except TypeError:
+                            sce = 0
                         self.levels[self.active_level]['dialogs'].append({
                             "line": match.group(1),
                             "attarction": self.parse_symbol(match.group(2)) or 0,
                             "uniqueness": self.parse_symbol(match.group(3)) or 0,
-                            "scene": match.group(4) - 1 if match.group(4) else 0,
+                            "scene": sce,
                             "response": 0
                         })
                         break
+                    elif (idx > 0 and p == patterns[-1]):
+                        self.levels[self.active_level]['dialogs'].append({
+                            "line": part,
+                            "attarction": 0,
+                            "uniqueness": 0,
+                            "scene": 0,
+                            "response": 0
+                        })
 
     def parse_symbol(self, symbol):
         if(symbol == "+"):

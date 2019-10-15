@@ -1,6 +1,7 @@
 {
     "level": "see your",
-    "scenes": [{
+    "scenes": [
+        {
             "name": "Introduction",
             "dialog": [
                 0,
@@ -46,7 +47,8 @@
             ]
         }
     ],
-    "dialogs": [{
+    "dialogs": [
+        {
             "line": "Hello, beautiful! You look a little bit tired. Do you need a free massage?",
             "attarction": -1,
             "uniqueness": -1,

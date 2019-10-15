@@ -1,6 +1,261 @@
 {
-    "level": "texting your",
-    "scenes": [],
-    "dialogs": [],
+    "level": "First Date",
+    "scenes": [
+        {
+            "name": "Step 1: [photo of the smiling girl on the street]",
+            "dialog": [
+                0,
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "name": "Step 2:  [photo of the smiling girl on the street] [girl: nice to see you! Where do you want to eat?]",
+            "dialog": [
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        {
+            "name": "Step 4: [photo of the girl with a grumpy face] [Sorry, I am afraid I have to go!]",
+            "dialog": [
+                8,
+                9
+            ]
+        },
+        {
+            "name": "Step 5: [photo of the smiling girl on the street] [Girl: You are so nice! I would be happy to have a muffin with coffe]",
+            "dialog": [
+                10,
+                11
+            ]
+        },
+        {
+            "name": "Step 7: [photo girl in the cafe, choosing food]",
+            "dialog": [
+                12,
+                13,
+                14
+            ]
+        },
+        {
+            "name": "Step 8: [photo girl sitting on the table, with coffee and muffin][Girl: Such a nice place]",
+            "dialog": [
+                15,
+                16,
+                17,
+                18
+            ]
+        },
+        {
+            "name": "Step 9: [photo of the girl with a cup of coffee] [Girl:  What do you do for a living?]",
+            "dialog": [
+                19,
+                20,
+                21
+            ]
+        },
+        {
+            "name": "Step 10: [photo of the laughing girl] [Girl: Ahahaha! Interesting!]",
+            "dialog": [
+                22
+            ]
+        },
+        {
+            "name": "Step 11: [photo of the girl with neutral face] [you are chatting about your lives, hobbies, jobs, etc] [Girl: Sorry, I have to go. It was nice to chat with you!]",
+            "dialog": [
+                23,
+                24,
+                25
+            ]
+        }
+    ],
+    "dialogs": [
+        {
+            "line": "It is so nice to see you! How are you? ",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Hello, Jenny!! Wow! You look fantastic! ",
+            "attarction": 1,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Hello, stranger! I am glad that aliens haven\u2019t kidnap you! ",
+            "attarction": 0,
+            "uniqueness": 1,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Hello! What was your name again? I always forget! (-+, go to step 3 if charm big enough, if not enough go to step 4)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "It is not important part, the important part - I am going to eat with you! ",
+            "attarction": 1,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Have I mentioned that I am vegan? I need some vegan-friendly place (-+, if charm big enough go to step 6, if not enough go to step 4)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "How about a Very Nice Place? It is nearby ",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "The kitchen of my apartment is a pretty nice place, do you want to check? ",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "I am so sorry! Would you give me one more chance, please? ",
+            "attarction": 1,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Nonono! You\u2019ve promised me lunch! ",
+            "attarction": -1,
+            "uniqueness": -1,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "You should not eat muffins! Sugar is killing you! ",
+            "attarction": -1,
+            "uniqueness": 1,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "I love muffins! I know the place with the best muffins in the city! I bet you will love their crazy-frazy-bluberrezy muffin! ",
+            "attarction": 1,
+            "uniqueness": 1,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Let me choose for you! I have a feeling that I know what would you like! My treat",
+            "attarction": 1,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Hope you will like it ",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Choose carefully please, I have only $20 to spend, I can\u2019t afford more (-=, if the charm is big enough go to step 8, if not - go to step 4)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Yup! My ex-girlfriend loved this place too. Many things here remind me about her (--, if the charm is big enough  go to step 9, if not - go to step 4)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "I am so glad you like it! This place has been founded  47 years ago, can you imagine!?! ",
+            "attarction": 1,
+            "uniqueness": 1,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "I am not a big fan of their style actually. This place would look much better with a statue of the pink flamingo in the middle, you know. (=+, if unique is too big go to step 4, otherwise go to step 9)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "My coffee could be hotter, I hate when my coffee is cold! Why it is happening with me all the time???  (--, if the charm is big enough  go to step 9, if not - go to step 4)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "I am a software developer. In a serious relationship with my computer\u2026 (++, go to step 11)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "I don\u2019t like the idea of having a job. I think life is about having the pleasure (--, if the charm is big enough go to step 11, otherwise go to step 4)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "First, you tell me what is your job. Is your salary big enough? (-=, go to step 11)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Not as interesting as the poster on the wall of my room. Do you want to have a look? (-+, if your charm is big enough, go to step 11, otherwise go to step 4)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Thank you very much for your time! Hope we will have at least one more chance to meet! (+=, go to step 12)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "Of course, you are so busy, you have no time for losers like me\u2026. I understand... (-- go to step 4)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        },
+        {
+            "line": "It was very nice to see you! Next time we can finally jump from SkyTower! (=+, go to step 12)",
+            "attarction": 0,
+            "uniqueness": 0,
+            "scene": 0,
+            "response": 0
+        }
+    ],
     "responses": []
 }
