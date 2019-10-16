@@ -24,7 +24,6 @@ class DialogCreator(Frame):
         root.bind("<Return>", self.handleReturn)
 
     def make_widgets(self, parent):
-        self.winfo_toplevel().title("Dialog Creator")
         self.parent.configure(background="#3c3d3d")
         self.Entries = Frame(parent, name="entries", bg="#3c3d3d")
         self.Entries.grid(columnspan=4, sticky=(N, S, E, W))
@@ -231,10 +230,10 @@ class DialogCreator(Frame):
 
     def load_levels(self):
         os.chdir('..')
-        print(os.getcwd())
+        self.winfo_toplevel().title("Dialog Creator " + os.getcwd())
         for r, d, f in os.walk(os.getcwd()):
             for file in f:
-                if 'level' in file and '.json' in file and '.meta' not in file:
+                if 'level_' in file and '.json' in file and '.meta' not in file:
                     self.levels.append(json.load(open(os.path.join(r, file))))
 
     def save_level(self):
