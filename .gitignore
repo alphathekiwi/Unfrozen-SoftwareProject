@@ -347,3 +347,6 @@ sysinfo.txt
 crashlytics-build.properties
 Game/Unfrozen Game/Temp/UnityLockfile
 Game/Unfrozen Game/Temp/
+Game/TestDialogue/
+Game/TestLevel/
+Game/Unfrozen Game/Assets/Resources/intro.avi
