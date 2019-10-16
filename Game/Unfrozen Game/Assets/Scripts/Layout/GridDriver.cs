@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Grid_Driver : MonoBehaviour
+[RequireComponent(typeof(RectTransform))]
+public class GridDriver : MonoBehaviour
 {
     public int cols = 1;
     public int rows = 1;

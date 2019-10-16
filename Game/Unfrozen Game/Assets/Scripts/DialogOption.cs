@@ -8,16 +8,11 @@ public class DialogOption : MonoBehaviour
     public dialogJson dialog;
     void Start()
     {
-        GetComponent<Button>().onClick.AddListener(delegate { Clicked(); }); ;
+        GetComponent<Button>().onClick.AddListener(delegate { GameManager.instance.ChangeScene(dialog); }); ;
     }
     public void SetDialog(dialogJson dialog)
     {
         this.dialog = dialog;
         GetComponentInChildren<Text>().text = dialog.line;
-    }
-    public void Clicked()
-    {
-        print("Choose: " + dialog.line);
-        SceneMechanics.currentScene = dialog.scene;
     }
 }

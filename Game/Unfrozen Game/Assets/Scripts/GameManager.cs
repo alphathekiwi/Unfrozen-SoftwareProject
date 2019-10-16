@@ -2,40 +2,75 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    static GameManager instance;
+    public static GameManager instance;
     static GameObject canvas;
     public List<levelJson> Levels;
+    public int Attration;
+    public int Uniqueness;
     void Start()
     {
-        if (instance != null) Destroy(this);
+        if (instance != null) Destroy(instance);
         instance = this;
         canvas = GameObject.Find("Canvas");
         LoadLevels();
-        LaunchLevel(Levels[0]);
+        //ShowMenu();
+        LaunchLevel(2);
     }
-    void LaunchLevel(levelJson level)
-    {
-        foreach (Transform child in canvas.transform)
-            child.gameObject.SetActive(false);
-        RectTransform ct = canvas.GetComponent<RectTransform>();
-        Vector3 pos = new Vector3(ct.rect.width / 2, ct.rect.height / 2, 0);
-        GameObject l = Instantiate(Resources.Load<GameObject>("Prefabs/Level"), pos, Quaternion.identity, canvas.transform);
-        l.GetComponent<SceneMechanics>().json = level;
-    }
-
     void LoadLevels()
     {
         Levels = new List<levelJson>();
         foreach (string f in Directory.GetFiles(Application.streamingAssetsPath))
-        {
             if (f.Contains("level_") && f.EndsWith(".json"))
             {
                 string l = File.ReadAllText(f);
                 Levels.Add(JsonUtility.FromJson<levelJson>(l));
             }
+    }
+    public static void ShowMenu()
+    {
+        ClearCanvas();
+        instance.Attration = 0;
+        instance.Uniqueness = 5;
+        instance.CreateGO("Prefabs/MainMenu");
+    }
+    internal void LaunchLevel(int level)
+    {
+        ClearCanvas();
+        instance.Attration = 0;
+        instance.Uniqueness = 5;
+        CreateGO("Prefabs/Level");
+        SceneMechanics.json = Levels[level];
+    }
+    public void ChangeScene(dialogJson dialog)
+    {
+        Attration += dialog.attarction;
+        Uniqueness += dialog.uniqueness;
+        if (Attration < 0 || Uniqueness > 9 || Uniqueness < 1)
+        {
+            ClearCanvas(); //CLEAR CANVAS THEN DRAW GAME OVER
+            GameObject go = CreateGO("Prefabs/GameOver");
+            go.GetComponentInChildren<Text>().text = SceneMechanics.json.responses[dialog.response];
+            go.GetComponentInChildren<Button>().onClick.AddListener(GameManager.ShowMenu); ;
         }
+        else
+        {
+            SceneMechanics.instance.currentScene = dialog.scene;
+            SceneMechanics.instance.SetResponse(SceneMechanics.json.responses[dialog.response]);
+        }
+    }
+    // HELPER METHODS
+    GameObject CreateGO(string name)
+    {
+        Rect ct = canvas.GetComponent<RectTransform>().rect;
+        return Instantiate(Resources.Load<GameObject>(name), new Vector3(ct.width / 2, ct.height / 2, 0), Quaternion.identity, canvas.transform);
+    }
+    static void ClearCanvas()
+    {
+        foreach (Transform child in canvas.transform)
+            Destroy(child.gameObject);
     }
 }
