@@ -15,10 +15,11 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null) Destroy(instance);
         instance = this;
+        DontDestroyOnLoad(gameObject);
         canvas = GameObject.Find("Canvas");
         LoadLevels();
         //ShowMenu();
-        LaunchLevel(2);
+        LaunchLevel(0);
     }
     void LoadLevels()
     {
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
         else
         {
             SceneMechanics.instance.currentScene = dialog.scene;
-            SceneMechanics.instance.SetResponse(SceneMechanics.json.responses[dialog.response]);
+            SceneMechanics.instance.SetResponse(dialog.response);
         }
     }
     // HELPER METHODS

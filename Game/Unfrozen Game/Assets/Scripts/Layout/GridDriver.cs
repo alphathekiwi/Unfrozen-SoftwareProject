@@ -13,9 +13,9 @@ public class GridDriver : MonoBehaviour
     {
         GridLayoutGroup grd = GetComponent<GridLayoutGroup>();
         RectTransform rt = GetComponent<RectTransform>();
-        grd.cellSize = new Vector2((rt.rect.width / cols) - grd.spacing.x, (rt.rect.height / rows) - grd.spacing.y);
-        grd.padding.left = (int)grd.spacing.x / 2;
-        grd.padding.top = (int)grd.spacing.y / 2;
+        grd.cellSize = new Vector2((rt.rect.width / cols) - grd.spacing.x * 0.55f, (rt.rect.height / rows) - grd.spacing.y);
+        grd.padding.left = (int)(grd.spacing.x / 20);
+        grd.padding.top = (int)(grd.spacing.y / 2);
     }
 
     // Update is called once per frame

@@ -24,6 +24,11 @@ public class SceneMechanics : MonoBehaviour
     void Update()
     {
         DialogOption[] children = GetComponentsInChildren<DialogOption>();
+        if (currentScene >= json.scenes.Length)
+        {
+            currentScene = 0;
+            return;
+        }
         for (int i = 0; i < children.Length; i++)
         {
             bool active = i < json.scenes[currentScene].dialog.Length;
@@ -33,17 +38,18 @@ public class SceneMechanics : MonoBehaviour
             children[i].SetDialog(json.dialogs[d]);
         }
         if (currentResponse >= 0)
-            SetResponse(json.responses[currentResponse]);
+            SetResponse(currentResponse);
         else
-            SetResponse("");
+            SetResponse(-1);
 
     }
-    public void SetResponse(string response)
+    public void SetResponse(int response)
     {
+        currentResponse = response;
         foreach (Transform child in transform)
         {
             Text t = child.GetComponent<Text>();
-            if (t != null) t.text = response;
+            if (t != null) t.text = response >= 0 && response < json.responses.Length ? json.responses[currentResponse] : "";
         }
     }
 }
