@@ -88,9 +88,9 @@ GameObject:
   - component: {fileID: 117001397278974074}
   - component: {fileID: 117001397278974072}
   - component: {fileID: 117001397278974073}
-  - component: {fileID: 117001397278974079}
   - component: {fileID: 4178209341214601880}
   - component: {fileID: 3295634676245351602}
+  - component: {fileID: 3623588045164116699}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -155,25 +155,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &117001397278974079
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117001397278974075}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 78fb356bba2eb574dad1a9f82d53bd9c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4178209341214601880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,9 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44156676c5aba36429f563506efc9c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontal: 3
-  vertical: 2
-  padding: {x: 0.5, y: 0.1}
+  horizontal: 2
+  vertical: 3
+  padding: {x: 0.05, y: -0.2}
 --- !u!114 &3295634676245351602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,8 +182,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a269c73bb3dcaa4f969604934c4b069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 0.2
+  CopySizeFrom: 2
+  height: 0.3
   width: 0
+--- !u!114 &3623588045164116699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117001397278974075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 40
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
 --- !u!1 &117001397422494119
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,16 +238,16 @@ RectTransform:
   m_GameObject: {fileID: 117001397422494119}
   m_LocalRotation: {x: -0.00044363737, y: -0.0073756557, z: -0.060037732, w: -0.9981688}
   m_LocalPosition: {x: 0, y: 0, z: -1.9999589}
-  m_LocalScale: {x: 11.997637, y: 11.999969, z: 1.0024023}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 117001396909160507}
   m_Father: {fileID: 117001397278974074}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 89.15301, y: 270, z: 96.884}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.7999232, y: 67.40001}
-  m_SizeDelta: {x: 19.13, y: 9.6}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &117001397422494139
 CanvasRenderer:
@@ -438,16 +445,16 @@ RectTransform:
   m_GameObject: {fileID: 117001398272439038}
   m_LocalRotation: {x: -0, y: -0, z: 0.028503234, w: -0.99959373}
   m_LocalPosition: {x: 0, y: 0, z: -2.0000303}
-  m_LocalScale: {x: 240.00002, y: 12, z: 20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 117001397606289044}
   m_Father: {fileID: 117001397278974074}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90.01999, y: 180, z: -3.2669983}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.199917, y: -49.000008}
-  m_SizeDelta: {x: 1, y: 6.1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &117001398272439026
 CanvasRenderer:
