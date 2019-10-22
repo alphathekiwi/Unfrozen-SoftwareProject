@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class menu : MonoBehaviour
 {
-    private Animator menu_anim;
+    private GameObject menu_buttons;
     // Start is called before the first frame update
     void Start()
     {
-        menu_anim = gameObject.GetComponentInChildren<Animator>();
-        menu_anim.gameObject.SetActive(false);
+        menu_buttons = gameObject.GetComponentInChildren<RectCenter>().gameObject;
+        menu_buttons.SetActive(false);
         StartCoroutine(ExecuteAfterTime(9));
     }
 
@@ -18,8 +18,8 @@ public class menu : MonoBehaviour
     IEnumerator ExecuteAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
-        menu_anim.gameObject.SetActive(true);
-        menu_anim.Play("menu_animation");
+        menu_buttons.SetActive(true);
+        menu_buttons.GetComponent<RectCenter>().UpdatePosition();
     }
     public void ButtonPlay()
     {
