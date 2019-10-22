@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public static int currentLevel;
+    public static int currentLevel = 0;
     public List<levelJson> Levels;
     static GameObject canvas;
     public int Attration;
