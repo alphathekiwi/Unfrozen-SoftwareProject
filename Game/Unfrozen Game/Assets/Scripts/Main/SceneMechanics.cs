@@ -37,11 +37,6 @@ public class SceneMechanics : MonoBehaviour
             int d = json.scenes[currentScene].dialog[i];
             children[i].SetDialog(json.dialogs[d]);
         }
-        if (currentResponse >= 0)
-            SetResponse(currentResponse);
-        else
-            SetResponse(-1);
-
     }
     public void SetResponse(int response)
     {
@@ -49,7 +44,13 @@ public class SceneMechanics : MonoBehaviour
         foreach (Transform child in transform)
         {
             Text t = child.GetComponent<Text>();
-            if (t != null) t.text = response >= 0 && response < json.responses.Length ? json.responses[currentResponse] : "";
+            if (t != null) t.text = response < json.responses.Length && response >= 0 ? json.responses[response] : "";
+            Image i = child.GetComponent<Image>();
+            if (i != null && response >= 0)
+            {
+                Sprite s = Resources.Load<Sprite>($"ImagesLevel_{(GameManager.currentLevel + 1)}/{response}");
+                if (s != null) i.sprite = s;
+            }
         }
     }
 }

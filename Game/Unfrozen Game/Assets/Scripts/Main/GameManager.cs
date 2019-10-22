@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         canvas = GameObject.Find("Canvas");
         LoadLevels();
-        //ShowMenu();
-        LaunchLevel(0);
     }
     void LoadLevels()
     {
@@ -37,43 +35,52 @@ public class GameManager : MonoBehaviour
         ClearCanvas();
         instance.Attration = 0;
         instance.Uniqueness = 5;
-        instance.CreateGO("Prefabs/Level");
-        currentLevel = 0;
-        SceneMechanics.json = instance.Levels[currentLevel];
+        GameObject menue = instance.CreateGO("Prefabs/Menue");
+        Destroy(menue.GetComponent<menu>());
     }
+    public static void nextLevel() => instance.NextLevel();
     public void NextLevel()
     {
-        print("Clicked ext level");
+        print("Clicked next level");
         ClearCanvas();
-        CreateGO("Prefabs/Level");
-        SceneMechanics.json = Levels[currentLevel];
+        if (currentLevel == 1)
+            CreateGO("Prefabs/Level2");
+        else
+        {
+            CreateGO("Prefabs/Level").name = "[L] " + Levels[currentLevel].level;
+            SceneMechanics.json = Levels[currentLevel];
+        }
     }
-    internal void LaunchLevel(int level)
+    internal void RestartLevel(int level)
     {
         ClearCanvas();
         instance.Attration = 0;
         instance.Uniqueness = 5;
-        CreateGO("Prefabs/Level");
+        CreateGO("Prefabs/Level").name = "[L] " + Levels[level].level;
         currentLevel = level;
         SceneMechanics.json = Levels[level];
+    }
+    public static void LostLevel(string explanation = "")
+    {
+        ClearCanvas(); //CLEAR CANVAS THEN DRAW GAME OVER
+        GameObject go = instance.CreateGO("Prefabs/GameOver");
+        go.GetComponentInChildren<Text>().text = explanation;
+        go.GetComponentInChildren<Button>().onClick.AddListener(GameManager.ShowMenu); ;
+    }
+    public static void WonLevel()
+    {
+        ClearCanvas(); //CLEAR CANVAS THEN DRAW WIN GAME
+        GameObject go = instance.CreateGO("Prefabs/WinGame");
+        currentLevel++;
     }
     public void ChangeScene(dialogJson dialog)
     {
         Attration += dialog.attarction;
         Uniqueness += dialog.uniqueness;
         if (Attration < 0 || Uniqueness > 9 || Uniqueness < 1)
-        {
-            ClearCanvas(); //CLEAR CANVAS THEN DRAW GAME OVER
-            GameObject go = CreateGO("Prefabs/GameOver");
-            go.GetComponentInChildren<Text>().text = SceneMechanics.json.responses[dialog.response];
-            go.GetComponentInChildren<Button>().onClick.AddListener(GameManager.ShowMenu); ;
-        }
+            LostLevel(SceneMechanics.json.responses[dialog.response]);
         else if (dialog.scene >= SceneMechanics.json.scenes.Length)
-        {
-            ClearCanvas(); //CLEAR CANVAS THEN DRAW WIN GAME
-            GameObject go = CreateGO("Prefabs/WinGame");
-            currentLevel = 2;
-        }
+            WonLevel();
         else
         {
             SceneMechanics.instance.currentScene = dialog.scene;

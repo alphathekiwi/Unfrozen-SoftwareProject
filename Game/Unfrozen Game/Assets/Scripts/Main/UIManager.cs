@@ -85,11 +85,12 @@ public class UIManager : MonoBehaviour
 
     void End(VD.NodeData data)
     {
-        container_NPC.SetActive(false);
-        container_PLAYER.SetActive(false);
-        VD.OnNodeChange -= UpdateUI;
-        VD.OnEnd -= End;
         VD.EndDialogue();
+        GameManager.WonLevel();
+        // container_NPC.SetActive(false);
+        // container_PLAYER.SetActive(false);
+        // VD.OnNodeChange -= UpdateUI;
+        // VD.OnEnd -= End;
     }
 
     private void OnDisable()
