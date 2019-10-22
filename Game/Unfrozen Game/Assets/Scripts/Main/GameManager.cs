@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    static GameObject canvas;
+    public static int currentLevel;
     public List<levelJson> Levels;
+    static GameObject canvas;
     public int Attration;
     public int Uniqueness;
     void Start()
@@ -36,7 +37,16 @@ public class GameManager : MonoBehaviour
         ClearCanvas();
         instance.Attration = 0;
         instance.Uniqueness = 5;
-        instance.CreateGO("Prefabs/MainMenu");
+        instance.CreateGO("Prefabs/Level");
+        currentLevel = 0;
+        SceneMechanics.json = instance.Levels[currentLevel];
+    }
+    public void NextLevel()
+    {
+        print("Clicked ext level");
+        ClearCanvas();
+        CreateGO("Prefabs/Level");
+        SceneMechanics.json = Levels[currentLevel];
     }
     internal void LaunchLevel(int level)
     {
@@ -44,6 +54,7 @@ public class GameManager : MonoBehaviour
         instance.Attration = 0;
         instance.Uniqueness = 5;
         CreateGO("Prefabs/Level");
+        currentLevel = level;
         SceneMechanics.json = Levels[level];
     }
     public void ChangeScene(dialogJson dialog)
@@ -56,6 +67,12 @@ public class GameManager : MonoBehaviour
             GameObject go = CreateGO("Prefabs/GameOver");
             go.GetComponentInChildren<Text>().text = SceneMechanics.json.responses[dialog.response];
             go.GetComponentInChildren<Button>().onClick.AddListener(GameManager.ShowMenu); ;
+        }
+        else if (dialog.scene >= SceneMechanics.json.scenes.Length)
+        {
+            ClearCanvas(); //CLEAR CANVAS THEN DRAW WIN GAME
+            GameObject go = CreateGO("Prefabs/WinGame");
+            currentLevel = 2;
         }
         else
         {
