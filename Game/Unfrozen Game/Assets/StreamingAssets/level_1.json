@@ -57,14 +57,14 @@
         },
         {
             "line": "Hey! May I ask you a little question? Do you know how many people live in Auckland?",
-            "attarction": 0,
-            "uniqueness": 1,
+            "attarction": 4,
+            "uniqueness": 3,
             "scene": 1,
             "response": 1
         },
         {
             "line": "Good morning! Wow! You are so beautiful! May I get coffee for you?",
-            "attarction": 1,
+            "attarction": 4,
             "uniqueness": 0,
             "scene": 2,
             "response": 2
@@ -74,112 +74,112 @@
             "attarction": 0,
             "uniqueness": 0,
             "scene": 3,
-            "response": 5
+            "response": 8
         },
         {
             "line": "Wow! That is a lot of people..  What is making you different from all those 2 million?",
             "attarction": -10,
             "uniqueness": -1,
             "scene": 0,
-            "response": 0
+            "response": 4
         },
         {
             "line": "Gosh! Two million! Why it is so hard to find a person for sharing food? Maybe we could talk about it over the dinner?",
             "attarction": 0,
             "uniqueness": 1,
             "scene": 4,
-            "response": 5
+            "response": 8
         },
         {
             "line": "Wow! Seems like you know a lot of things about this city! Maybe you could tell me more while we are having dinner together?",
-            "attarction": 1,
-            "uniqueness": -1,
+            "attarction": 4,
+            "uniqueness": 3,
             "scene": 4,
-            "response": 0
+            "response": 8
         },
         {
             "line": "Too bad I can\u2019t buy coffee for all 2 million.. Maybe I could buy one for you at least?",
-            "attarction": 1,
-            "uniqueness": 0,
+            "attarction": 5,
+            "uniqueness": 3,
             "scene": 3,
-            "response": 0
+            "response": 2
         },
         {
             "line": "Oh, cool! My ex-girlfriend is a doctor, she could be quite annoying sometimes with her medical advice",
             "attarction": -10,
             "uniqueness": -1,
             "scene": 0,
-            "response": 0
+            "response": 4
         },
         {
             "line": "Interesting! Where are you studying? In Auckland University? Are there some nice places for dinner around there?",
-            "attarction": 1,
-            "uniqueness": 0,
+            "attarction": 4,
+            "uniqueness": 2,
             "scene": 5,
-            "response": 0
+            "response": 3
         },
         {
             "line": "Oh, that is cool! I have a rare disorder - I bring flowers for the person with who I am going to have dinner. I will show you! I only need your number so we could make an appointment.",
-            "attarction": 1,
-            "uniqueness": 1,
+            "attarction": 5,
+            "uniqueness": 2,
             "scene": 5,
-            "response": 0
+            "response": 6
         },
         {
             "line": "I am very lucky! I have something on my skin right here, could you have a look?",
             "attarction": -10,
             "uniqueness": 0,
             "scene": 0,
-            "response": 0
+            "response": 4
         },
         {
             "line": "Would you prefer to have a drink or dinner? Not sure if I can afford dinner..",
             "attarction": -10,
             "uniqueness": -1,
             "scene": 0,
-            "response": 0
+            "response": 4
         },
         {
             "line": "Oh, wow! I am so lucky to get \u201cyes\u201d! I try my luck one more time: may I get your number?",
-            "attarction": 1,
+            "attarction": 3,
             "uniqueness": 0,
             "scene": 5,
             "response": 6
         },
         {
             "line": "Do you know some good place for dinner? I don\u2019t go out much so I would be happy if you choose the place!",
-            "attarction": 1,
-            "uniqueness": -1,
+            "attarction": 3,
+            "uniqueness": 1,
             "scene": 4,
-            "response": 5
+            "response": 3
         },
         {
             "line": "I am vegan, so let me choose the place. You should switch to a vegan diet as well, it is very good for your health.",
             "attarction": -10,
             "uniqueness": -1,
             "scene": 0,
-            "response": 0
+            "response": 4
         },
         {
             "line": "Is there any chance to try this place with you? My treat!.. Could I get your number so we could arrange the meeting?",
-            "attarction": -1,
+            "attarction": 3,
             "uniqueness": 1,
             "scene": 5,
             "response": 6
         },
         {
             "line": "You have to show me this place! Could I get your number so I could let you know when I am free?",
-            "attarction": -1,
+            "attarction": -3,
             "uniqueness": -1,
             "scene": 0,
-            "response": 0
+            "response": 6
         },
         {
             "line": "Oh, no!!! I have this weird allergy on the checkered tablecloth! Maybe I could invite you to Very Nice Place instead? There are nice wooden tables and no tablecloths at all!",
-            "attarction": -1,
-            "uniqueness": 1,
+            "attarction": 3,
+            "uniqueness": 6,
             "scene": 3,
-            "response": 5
+            "response": 6
         },
         {
             "line": "Italian? Oh no, my ex was Italian, I still trying to get over that relationship. No Italian please.",
@@ -192,11 +192,12 @@
     "responses": [
         "Sorry I don't want to discuss that",
         "About 2 million I guess",
-        "That would be nice, but not right now, im med student and have a class to be at soon",
+        "That would be nice! But I have to go soon, I am studying medicine here.",
         "Yes, there is a nice Italian place nearby",
-        "Sorry I have to go!",
+        "Sorry, I have to go!",
         "I'm not sure",
         "Well okay, heres my number",
-        "Actualy im really not interested"
+        "Actualy im really not interested",
+        "Maybe!"
     ]
 }
