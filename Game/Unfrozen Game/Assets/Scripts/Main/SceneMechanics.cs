@@ -42,14 +42,14 @@ public class SceneMechanics : MonoBehaviour
     {
         currentResponse = response;
         foreach (Transform child in transform)
-        {
-            Text t = child.GetComponent<Text>();
-            if (t != null) t.text = response < json.responses.Length && response >= 0 ? json.responses[response] : "";
-            Image i = child.GetComponent<Image>();
-            if (i != null && response >= 0)
+        {            
+            if (child.name == "Response") 
+                child.GetComponentInChildren<Text>().text = response < json.responses.Length && response >= 0 ? json.responses[response] : "";
+            else if (child.name == "Reaction" && response >= 0)
             {
+                Image i = child.GetComponent<Image>();
                 Sprite s = Resources.Load<Sprite>($"ImagesLevel_{(GameManager.currentLevel + 1)}/{response}");
-                if (s != null) i.sprite = s;
+                if (s != null && i != null) i.sprite = s;
             }
         }
     }

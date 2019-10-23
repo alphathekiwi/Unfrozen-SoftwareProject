@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         canvas = GameObject.Find("Canvas");
         LoadLevels();
+        NextLevel();
     }
     void LoadLevels()
     {
