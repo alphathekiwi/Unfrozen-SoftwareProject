@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class WinLevel : MonoBehaviour
 {
-    public void NextLevel() => GameManager.instance.NextLevel();
+    public void NextLevel() => GameManager.nextLevel();
 }

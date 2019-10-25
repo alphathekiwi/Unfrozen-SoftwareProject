@@ -8,28 +8,27 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static int currentLevel = 0;
-    public List<levelJson> Levels;
+    public static List<levelJson> Levels;
     static GameObject canvas;
     public int Attration;
     public int Uniqueness;
     void Start()
     {
-        if (instance != null) Destroy(instance);
+        if (instance != null) Destroy(this);
         instance = this;
         DontDestroyOnLoad(gameObject);
         canvas = GameObject.Find("Canvas");
         LoadLevels();
+#if UNITY_EDITOR
         NextLevel();
+#endif
     }
     void LoadLevels()
     {
         Levels = new List<levelJson>();
         foreach (string f in Directory.GetFiles(Application.streamingAssetsPath))
             if (f.Contains("level_") && f.EndsWith(".json"))
-            {
-                string l = File.ReadAllText(f);
-                Levels.Add(JsonUtility.FromJson<levelJson>(l));
-            }
+                Levels.Add(JsonUtility.FromJson<levelJson>(File.ReadAllText(f)));
     }
     public static void ShowMenu()
     {
@@ -42,7 +41,9 @@ public class GameManager : MonoBehaviour
     public static void nextLevel() => instance.NextLevel();
     public void NextLevel()
     {
-        print("Clicked next level");
+        if (Levels.Count == 0)
+            LoadLevels();
+
         ClearCanvas();
         if (currentLevel == 1)
             CreateGO("Prefabs/Level2");
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         {
             CreateGO("Prefabs/Level").name = "[L] " + Levels[currentLevel].level;
             SceneMechanics.json = Levels[currentLevel];
+            print(SceneMechanics.json);
         }
     }
     internal void RestartLevel(int level)
