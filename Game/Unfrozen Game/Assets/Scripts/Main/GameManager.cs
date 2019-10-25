@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         LoadLevels();
 #if UNITY_EDITOR
+        currentLevel = 1;
         NextLevel();
 #endif
     }
@@ -41,7 +42,8 @@ public class GameManager : MonoBehaviour
     public static void nextLevel() => instance.NextLevel();
     public void NextLevel()
     {
-        if (Levels.Count == 0)
+        print($"Loading Level {currentLevel}");
+        if (currentLevel > Levels.Count)
             LoadLevels();
 
         ClearCanvas();
@@ -73,17 +75,23 @@ public class GameManager : MonoBehaviour
     public static void WonLevel()
     {
         ClearCanvas(); //CLEAR CANVAS THEN DRAW WIN GAME
-        GameObject go = instance.CreateGO("Prefabs/WinGame");
         currentLevel++;
+        GameObject go = instance.CreateGO("Prefabs/WinGame");
+    }
+    public static void WonLevel2()
+    {
+        ClearCanvas(); //CLEAR CANVAS THEN DRAW WIN GAME
+        currentLevel = 2;
+        GameObject go = instance.CreateGO("Prefabs/WinGame");
     }
     public void ChangeScene(dialogJson dialog)
     {
         Attration += dialog.attarction;
         Uniqueness += dialog.uniqueness;
-        if (Attration < 0 || Uniqueness > 9 || Uniqueness < 1)
-            LostLevel(SceneMechanics.json.responses[dialog.response]);
-        else if (dialog.scene >= SceneMechanics.json.scenes.Length)
+        if (dialog.scene >= SceneMechanics.json.scenes.Length)
             WonLevel();
+        else if (Attration < 0 || Uniqueness > 9 || Uniqueness < 1)
+            LostLevel(SceneMechanics.json.responses[dialog.response]);
         else
         {
             SceneMechanics.instance.currentScene = dialog.scene;
