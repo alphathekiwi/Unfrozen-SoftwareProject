@@ -1,12 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class menu : MonoBehaviour
 {
     private GameObject menu_buttons;
     // Start is called before the first frame update
+    void Awake()
+    {
+        foreach (Button b in GetComponentsInChildren<Button>())
+        {
+            if (b.gameObject.name == "Play Button")
+            {
+                print("Adding Play button listener");
+                b.onClick.AddListener(delegate { GameManager.nextLevel(); });
+            }
+            if (b.gameObject.name == "Quit Button")
+            {
+                print("Adding Quit button listener");
+                b.onClick.AddListener(delegate { Application.Quit(); });
+            }
+        }
+    }
     void Start()
     {
         menu_buttons = gameObject.GetComponentInChildren<RectCenter>().gameObject;

@@ -350,3 +350,4 @@ Game/TestDialogue/
 Game/TestLevel/
 Game/Unfrozen Game/Assets/Resources/intro.avi
 *.mp4
+Game/DevBuild/

@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Intro(Yara).unity
     guid: 69b91159986cfe34ba5b550df24fe1bd
   - enabled: 1

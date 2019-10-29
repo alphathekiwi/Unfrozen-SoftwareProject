@@ -9,12 +9,14 @@ public class levelJson
     public sceneJson[] scenes;
     public dialogJson[] dialogs;
     public string[] responses;
+    public override string ToString() => JsonUtility.ToJson(this);
 }
 [Serializable]
 public class sceneJson
 {
     public string name;
     public int[] dialog;
+    public override string ToString() => JsonUtility.ToJson(this);
 }
 [Serializable]
 public class dialogJson
@@ -24,4 +26,5 @@ public class dialogJson
     public int uniqueness;
     public int scene;
     public int response;
+    public override string ToString() => JsonUtility.ToJson(this);
 }
