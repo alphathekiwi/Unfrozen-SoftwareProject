@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Articles with tag "{{ tag }}"</h1>
+<div class="tags_and_articles_list">
+  <div class="hashtags">
+    {% for tag in tags %}
+      <a class="each_tag" href="{% url 'articles_by_tag_list' mytag=tag.tag_name %}"> #{{ tag.tag_name }} </a>
+    {% endfor %}
+  </div>
+  <div class="artcles">
+    {% for article in articles_with_tag %}
+    <a class="article_name_list" href="{% url 'article' myarticleID=article.article_id  %}"> {{ article.article_name}} </a>
+    <p class="more">by {{ article.article_author}}</p>
+    <p class="article intro">{{ article.article_content|striptags|slice:"300" }}...
+    <a class="more" href="{% url 'article' myarticleID=article.article_id  %}">more</a>
+    </p>
+    {% empty %}
+    <i>Sorry, there is no articles with this tag.</i>
+    {% endfor %}
+  </div>
+  </div>
+{% endblock %}

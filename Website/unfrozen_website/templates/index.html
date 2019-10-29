@@ -1,0 +1,18 @@
+
+{% load static %}
+<html>
+  <head>
+    <link rel="shortcut icon" type="image/png" href="{% static '/images/favicon.ico' %}"/>
+    <link href="//db.onlinewebfonts.com/c/7ec30e4b2eadf209e7f3258a287f547a?family=Russo+One" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+  </head>
+  <body class="index_body">
+    <center>
+      <video  width="1200" loop autoplay autobuffer nocontrols muted>
+        <source src="{% static '/images/MAINCOMP.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+      </video>
+      <h1 class="homepage"><a href="{% url 'about' %}">UNFREEZE YOUSELF</a></h1>
+    </center>
+  </body>
+</html>

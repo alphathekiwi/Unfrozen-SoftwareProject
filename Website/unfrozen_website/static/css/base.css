@@ -1,0 +1,174 @@
+@import url(//db.onlinewebfonts.com/c/7ec30e4b2eadf209e7f3258a287f547a?family=Russo+One);
+
+.index_body{
+    background-color: white;
+  }
+
+body {
+  background-color: #F1F9FF
+}
+
+a {
+  text-decoration: none;
+  color: #2699FB;
+}
+
+.main{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width:100%;
+}
+
+#unfrozen_logo{
+  padding-left: 70px;
+  padding-right: 18px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 20;
+  overflow: hidden;
+  color: #2699FB;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  text-align: center;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-decoration: none;
+  color: #2699FB;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 24;
+  vertical-align: middle;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+
+}
+
+.menu{
+  z-index: 2;
+  display: flex;
+  line-height: 163px;
+  padding-left: 66px;
+}
+
+.content{
+  z-index: 1;
+  width:70%;
+  background-color: #D2E8F9;
+  margin-top: -120px;
+}
+
+.inner_content{
+
+  padding-top: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 70px;
+  color: #2699FB;
+  font-family: Arial;
+
+}
+
+h1, h3{
+  color: #2699FB;
+  font-family: "Russo One";
+  text-align: center;
+}
+
+.footer{
+  width:70%;
+  padding-top: 10px;
+}
+
+.hashtags  {
+  width: 350px;
+  background-color: #F1F9FF;
+  font-weight: bold;
+  padding: 30;
+}
+
+a.each_tag  {
+  color: #2699FB;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.artcles{
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+}
+
+.social {
+}
+
+.article_author{
+  width: 350px;
+  background-color: #F1F9FF;
+  padding: 20px;
+}
+
+.article_author_pic{
+  background-color: #F1F9FF;
+  padding: 20px;
+}
+
+.date_added{
+  font-size: smaller;
+  font-style: italic;
+  text-align: right;
+}
+
+a.more, .more{
+  font-size: smaller;
+  font-style: italic;
+  text-align: right;
+  text-decoration: none;
+  color: #2699FB;
+}
+
+a.article_name_list{
+  padding-top: 20px;
+  color: #2699FB;
+  font-family: "Russo One";
+  text-align: center;
+  text-decoration: none;
+}
+
+.tags_and_articles_list{
+  display: flex;
+}
+
+.developer{
+  padding: 20px;
+  color: #2699FB;
+  font-family: Arial;
+  align-items: center;
+
+}
+
+.dev_pic{
+  margin-left: auto;
+  margin-right: auto;;
+ display:block;
+}
+
+.td_dev{
+  vertical-align: top;
+  width:50%;}
+
+h1.homepage{
+  margin-left: 20px;
+}

@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<table>
+  <tr>
+      <td class="td_dev">
+        <div class="developer">
+          <img class="dev_pic"  src = "{% static '/images/aaron.png' %}"   width="200px">
+          <h1>Aaron Saunders</h1>
+          <p class="more">Software Developer</p>
+          <p>Writes working code, that has been tested for correctness, in the time allocated, following accepted best practices, in a way that can be easily maintained and enhanced, in collaboration with their team, and continuously improves their knowledge and skills throughout their career.</p>
+          <img src="{% static '/images/instagram.png' %}">
+          <img src="{% static '/images/facebook.png' %}">
+          <img src="{% static '/images/twitter.png' %}">
+
+        </div>
+      </td>
+      <td class="td_dev">
+        <div class="developer">
+          <img  class="dev_pic" src = "{% static '/images/yara.png' %}"  width="200px">
+          <h1>Yara Gagen-Torn</h1>
+          <p class="more">Good Person</p>
+          <p> Promotes happy, satisfying, and fulfilling lives for those that they care about within their ability.
+Enjoys a happy, satisfying, and fulfilling life within their ability.
+Does not prevent others from living happy, satisfying, and fulfilling lives within their ability, but also within reason.
+          </p>
+          <img src="{% static '/images/instagram.png' %}">
+          <img src="{% static '/images/facebook.png' %}">
+          <img src="{% static '/images/twitter.png' %}">
+
+        </div>
+
+      </td>
+  </tr>
+</table>
+{% endblock %}

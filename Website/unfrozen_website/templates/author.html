@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h1>{{ author_full_name}}</h1>
+<div class="tags_and_articles_list">
+ <div class="article_author_pic"><img class="about_author_picture" src = "{% static pic_url %}" width="200px"></div>
+ <div class="artcles">{{ author_info }}
+
+ <p class="more">Link: <a href="{{author_link}}">{{ author_link}}</a><br>
+ Email: {{ author_email}}</p>
+
+
+ </div>
+
+</div>
+{% endblock %}

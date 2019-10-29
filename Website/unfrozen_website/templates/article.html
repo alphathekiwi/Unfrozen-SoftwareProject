@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h1>{{ article_name}}</h1>
+<div class="tags_and_articles_list">
+<div class="article_author">
+  <img class="dev_pic" src = "{% static '/images/Vinita-Mehta.jpg' %}" width="100px">
+  <h3><a href="{% url 'author' myauthorfullname=article_author_full_name %}">{{ article_author_full_name }}</a></h3>
+  <p>{{ article_author_info }}</p>
+</div>
+  <div class="artcles">
+   {{ article_content }}
+   <p class="date_added">Published: {{ article_date_added }}
+   <br>Source: <a href="{{ article_source}}">{{ article_source|slice:"40"}}...</a></p>
+  </div>
+</div>
+{% endblock %}

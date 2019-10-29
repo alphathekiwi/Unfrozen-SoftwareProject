@@ -1,0 +1,35 @@
+
+{% load static %}
+<html>
+  <head>
+    <link rel="shortcut icon" type="image/png" href="{% static '/images/favicon.ico' %}"/>
+    <link href="//db.onlinewebfonts.com/c/7ec30e4b2eadf209e7f3258a287f547a?family=Russo+One" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/animation.css' %}">
+  </head>
+  <body>
+    <div class="main">
+    <!--MAIN MENU-->
+    <div class="menu">
+      <ul>
+          <li><a href="{% url 'index' %}">HOME</a></li>
+          <li><a href="{% url 'about' %}">ABOUT</a></li>
+          <li><img  id="unfrozen_logo" src="{% static '/images/LOGO_V1.png' %}" height="170"></li>
+          <li><a href="{% url 'whattodo' %}">WHAT TO DO?</a></li>
+          <li><a href="{% url 'ourteam' %}">OUR TEAM</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="inner_content">
+    {% block content %}
+    {% endblock %}
+      </div>
+    </div>
+    <div class="footer">
+      <img src="{% static '/images/instagram.png' %}">
+      <img src="{% static '/images/facebook.png' %}">
+      <img src="{% static '/images/twitter.png' %}">
+    </div>
+  </div>
+  </body>
+</html>
